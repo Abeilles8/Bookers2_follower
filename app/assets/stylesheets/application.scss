@@ -14,16 +14,16 @@
  *= require_self
  */
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  .clearfix::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
+  // * {
+  //   margin: 0;
+  //   padding: 0;
+  //   box-sizing: border-box;
+  // }
+  // .clearfix::after {
+  //   content: "";
+  //   display: block;
+  //   clear: both;
+  // }
 
   // title
   header .navbar-left span {
@@ -41,6 +41,9 @@
     color: red;
   }
 
+  .row{
+    padding: 50px 0;
+  }
 
   @import "bootstrap-sprockets";
   @import "bootstrap";

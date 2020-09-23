@@ -16,9 +16,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
-$(window).on('load resize', function(){
 
-  var height = $('.navbar').height();
+// $(window).on('load resize', function(){
 
-  $('body').css('padding-top', height);
-});
+//   var height = $('.navbar').height();
+
+//   $('body').css('padding-top', height);
+// });
