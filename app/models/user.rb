@@ -4,5 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  mount_uploader :image, ImageUploader
+  # UserImageモデルを関連付け
+  has_many :user_images, dependent: :destroy
+
+  attachment :image
+
 end
