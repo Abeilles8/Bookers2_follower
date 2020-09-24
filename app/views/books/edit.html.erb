@@ -1,6 +1,4 @@
-<div class="body">
   <div class="container">
-    <p class="notice"></p>
     <div class="row">
       <div class="col-md-6 col-md-ofset-3">
         <h1>Editing Book</h1>
@@ -18,14 +16,14 @@
           <% end %>
 
         <%# 投稿フォーム%>
-          <div class="field row">
-            <label for="book_title">Title</label>  
-            <%= f.text_field :title, class:"col-xs-12 book_title" %>
+          <div class="field">
+            <label>Title</label>  
+            <%= f.text_field :title, class:"edit-title col-xs-12" %>
           </div>
 
-          <div class="field row">
-            <label for="book_title">Body</label>  
-            <%= f.text_area :body, class:"col-xs-12 book_title" %>
+          <div class="field">
+            <label>Body</label>  
+            <%= f.text_area :body, class:"edit-body col-xs-12" %>
           </div>
 
           <div class="actions">
@@ -43,4 +41,3 @@
       </div>
     </div>
   </div>
-</div>
