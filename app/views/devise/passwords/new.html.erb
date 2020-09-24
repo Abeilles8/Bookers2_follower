@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
-      <p id="notice"></p>
       <h2>Forgot your password?</h2>
 
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= render "users/shared/error_messages", resource: resource %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :email %><br />
@@ -12,11 +11,10 @@
         </div>
 
         <div class="actions">
-          <%= f.submit "Send me reset password instructions", 
-          class: "btn btn-danger" %>
+          <%= f.submit "Send me reset password instructions",   class: "btn btn-danger" %>
         </div>
       <% end %>
 
-      <%= render "users/shared/links" %>
+      <%= render "devise/shared/links" %>
   </div>  
 </div>

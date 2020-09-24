@@ -1,19 +1,8 @@
 <div class="container">
   <div class="row">
-      <%# エラーメッセージ表示%>
-      <div>
-        <% if @book.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
-            <ul>
-              <% @book.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-
+  <%= flash[:notice] %>
+    <!--error表示-->
+    <%= render 'root/errors' %>
         <!--user_info-->
     <div class="col-xs-3 clearfix">
         <div class="user_info">
@@ -43,33 +32,35 @@
       <%# 投稿された%>
       <div class="col-xs-9 clearfix">
         <% if @book.save %>
-          <p>保存</p>
-        <% else %>
-          <h2>Books</h2>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Opinion</th>
-            </tr>
-          </thead>
-
-          <table class="table">
-            <tbody>
-              <% @books.each do |book| %>
+            <%= render 'show' %>
+          <% else %>
+            <h2>Books</h2>
+            <thead>
               <tr>
-                <td></td>
-                <td><%= book.title %></td>
-                <td><%= book.body %></td>
-                <td>
-                  <%= link_to 'Edit', edit_book_path(book.id), class:"btn-sm btn-success" %>
-                </td>
-                <td>
-                  <%= link_to 'Destroy', "", method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-sm btn-danger" %>
-                </td>
+                <th>Title</th>
+                <th>Opinion</th>
               </tr>
-              <% end %>
-            </tbody>
-          </table>
+            </thead>
+
+            <table class="table">
+              <tbody>
+                <% @books.each do |book| %>
+                <tr>
+                  <td>
+                    id
+                  </td>
+                  <td><%= book.title %></td>
+                  <td><%= book.body %></td>
+                  <td>
+                    <%= link_to 'Edit', edit_book_path(book.id), class:"btn-sm btn-success" %>
+                  </td>
+                  <td>
+                    <%= link_to 'Destroy', book_path(book), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-sm btn-danger" %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
         <% end %>
       </div>
   </div>
