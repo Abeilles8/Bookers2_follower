@@ -1,17 +1,23 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+
+  def new
+    @book = Book.new
+    @books = Book.all
+    
+  end
+
   def index
     @book = Book.new
     @books = Book.all
-
   end
 
 
   def create
     @book = Book.new(book_params)
-
     if @book.save
       flash[:notice] = "You have creatad book successfully."
-      redirect_to books_path(@book.id)
+      redirect_to book_path(@book.id)
     else
       @books = Book.all
       render 'index'
@@ -20,10 +26,12 @@ class BooksController < ApplicationController
 
 
   def show
-
     @book = Book.find(params[:id])
-    @book.save
-    render 'index'
+    if @book.save
+      flash[:notice] = "successfully"
+    else
+      render 'index'
+    end
   end
 
 

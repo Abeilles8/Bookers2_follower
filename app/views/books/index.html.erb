@@ -1,39 +1,36 @@
 <div class="container">
   <div class="row">
-  <%= flash[:notice] %>
-    <!--error表示-->
-    <%= render 'root/errors' %>
-        <!--user_info-->
+      <%= flash[:notice] %>
+      <!--error表示-->
+      <%= render 'root/errors' %>
+
+    <!--user_info-->
     <div class="col-xs-3 clearfix">
         <div class="user_info">
           <h1>User Info</h1>
           <h2>画像</h2>
           <%= attachment_image_tag @user, :image, :fill, 300, 300, format: 'jpeg' %>
+          <%= link_to '設定', "" %>
         </div>
-
 
         <%# 投稿機能%>
         <h1>New book</h1>
-        <%= form_for(@book, url: '/books') do |f| %>
+          <%= form_for(@book) do |f| %>
             <p>Title</p> 
             <%= f.text_field :title , class: "edit-title col-xs-12" %>
-
+              <br>
             <p>Opinion</p> 
             <%= f.text_area :body, class: "edit-body col-xs-12" %>
-            <br>
             <div>
               <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
             </div>
-        <% end %>
+          <% end %>
     </div>
 
 
 
-      <%# 投稿された%>
-      <div class="col-xs-9 clearfix">
-        <% if @book.save %>
-            <%= render 'show' %>
-          <% else %>
+    <%# 投稿された%>
+        <div class="col-xs-9 clearfix">
             <h2>Books</h2>
             <thead>
               <tr>
@@ -42,26 +39,19 @@
               </tr>
             </thead>
 
-            <table class="table">
+            <table class="table clearfix">
               <tbody>
                 <% @books.each do |book| %>
-                <tr>
-                  <td>
-                    id
-                  </td>
-                  <td><%= book.title %></td>
-                  <td><%= book.body %></td>
-                  <td>
-                    <%= link_to 'Edit', edit_book_path(book.id), class:"btn-sm btn-success" %>
-                  </td>
-                  <td>
-                    <%= link_to 'Destroy', book_path(book), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-sm btn-danger" %>
-                  </td>
-                </tr>
+                  <tr>
+                    <td>
+                      id
+                    </td>
+                    <td><%= book.title %></td>
+                    <td><%= book.body %></td>
+                  </tr>
                 <% end %>
               </tbody>
             </table>
-        <% end %>
       </div>
   </div>
 </div>
