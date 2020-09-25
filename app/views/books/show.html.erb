@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+      <%= flash[:notice] %>
+      <!--error表示-->
+      <%= render 'root/errors' %>
+
+    <!--user_info-->
+    <div class="col-xs-3 clearfix">
+        <div class="user_info">
+          <h1>User Info</h1>
+          <h2>画像</h2>
+          <%= attachment_image_tag @user, :image, :fill, 300, 300, format: 'jpeg' %>
+          <%= link_to '設定', "" %>
+        </div>
+
+        <%# 投稿機能%>
+        <h1>New book</h1>
+          <%= form_for(@book, url: '/books') do |f| %>
+            <p>Title</p> 
+            <%= f.text_field :title , class: "edit-title col-xs-12" %>
+              <br>
+            <p>Opinion</p> 
+            <%= f.text_area :body, class: "edit-body col-xs-12" %>
+            <div>
+              <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+            </div>
+          <% end %>
+    </div>
+
+
+
+    <%# 投稿された%>
+    <div class="col-xs-9 clearfix">
+            <h2>Book detail</h2>
+            <thead>
+              <tr>
+                <td>画像</td>
+                <td>Title</td>
+                <td>Opinion</td>
+              </tr>
+            </thead>
+
+            <table class="table">
+              <tbody>
+                  <tr>
+                    <td>
+                      名前
+                    </td>
+                    <td><%= @book.title %></td>
+                    <td><%= @book.body %></td>
+                    <td>
+                      <%= link_to 'Edit', edit_book_path(@book.id), 
+                      class:"btn-sm btn-success" %>
+                    </td>
+                    <td>
+                      <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に消しますか?", 
+                      class: "btn-sm btn-danger" %>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>

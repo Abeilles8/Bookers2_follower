@@ -19,7 +19,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
                 <li>
-                  <%= link_to " Home", books_path,
+                  <%= link_to " Home", new_book_path,
                    class: "glyphicon glyphicon-home home" %>
                 </li>
                 <li>
@@ -27,7 +27,7 @@
                    class:"glyphicon glyphicon-user users" %>
                 </li>
                 <li>
-                  <%= link_to " Books", "#",
+                  <%= link_to " Books", books_path,
                    class:"glyphicon glyphicon-book books" %>
                 </li>
                 <li>
@@ -38,19 +38,20 @@
             <% else %>
 
                 <li>
-                  <%= link_to " Home", root_path,
+                  <%= link_to " Home", "/",
                    class: "glyphicon glyphicon-home home" %>
                 </li>
-
                 <li>
-                  <%= link_to " About", new_book_path,class:"glyphicon glyphicon-link about" %>
+                  <%= link_to " About", home_about_path,
+                    class:"glyphicon glyphicon-link about" %>
                 </li>
                 <li>
                   <%= link_to " sign up", new_user_registration_path, 
                   class:"glyphicon glyphicon-edit sign_up" %>
                 </li>
                 <li>
-                  <%= link_to " login", new_user_session_path, class:"glyphicon glyphicon-log-in sign_in" %>
+                  <%= link_to " login", new_user_session_path,  
+                   class:"glyphicon glyphicon-log-in sign_in" %>
                 </li>
             <% end %>
           </ul>
