@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   has_many :user_images, dependent: :destroy
   
-  attachment :image
   attachment :profile_image
 
   validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 20}
