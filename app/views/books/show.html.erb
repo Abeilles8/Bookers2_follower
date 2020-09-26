@@ -1,3 +1,4 @@
+  <!--詳細_page--->
 <div class="container">
   <div class="row">
       <%= flash[:notice] %>
@@ -5,12 +6,23 @@
       <%= render 'root/errors' %>
 
     <!--user_info-->
-    <div class="col-xs-3 clearfix">
+    <div class="col-xs-3">
         <div class="user_info">
-          <h1>User Info</h1>
-          <h2>画像</h2>
+          <h2>User Info</h2>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td><%= current_user.name %></td>
+              </tr>
+              <tr>
+                <td>Introduction</td>
+                <td><%= current_user.introduction %></td>
+              </tr>
+            </tbody>
+          </table>
           <%= attachment_image_tag @user, :image, :fill, 300, 300, format: 'jpeg' %>
-          <%= link_to '設定', "" %>
+          <%= link_to '設定', edit_user_path(current_user.id) %>
         </div>
 
         <%# 投稿機能%>
@@ -30,20 +42,13 @@
 
 
     <%# 投稿された%>
-    <div class="col-xs-9 clearfix">
+    <div class="col-xs-9">
             <h2>Book detail</h2>
-            <thead>
-              <tr>
-                <td>画像</td>
-                <td>Title</td>
-                <td>Opinion</td>
-              </tr>
-            </thead>
-
             <table class="table">
               <tbody>
                   <tr>
                     <td>
+                      <%= image_tag "" %>
                       名前
                     </td>
                     <td><%= @book.title %></td>

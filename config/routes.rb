@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   
   get "home/about" => "root#about"
   resources :books
-  resources :users, only: [:new, :show, :index, :edit, :create, :destroy]
+  resources :users, only: [:index, :show, :edit, :update]
 end
