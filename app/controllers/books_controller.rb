@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  # before_action :login_check, only: [:index]
 
   def new
     @book = Book.new
