@@ -1,41 +1,16 @@
   <!--Home_page-->
 <div class="container">
   <div class="row">
-      <div class="col-xs-3 clearfix">
-        <!--user Info-->
-        <div class="user_info">
-          <h2>User Info</h2>
-          <table class="table">
-            <tbody>
-              <tr>
-                <td>name</td>
-                <td><%= current_user.name %></td>
-              </tr>
-              <tr>
-                <td>Introduction</td>
-                <td><%= current_user.introduction %></td>
-              </tr>
-            </tbody>
-          </table>
-          <%= attachment_image_tag @user, :image, :fill, 300, 300, format: 'jpeg' %>
-          <%= link_to '設定', edit_user_path(current_user.id) %>
-        </div>
-        <%# 投稿機能%>
-        <h1>New book</h1>
-          <%= form_for(@book) do |f| %>
-            <p>Title</p> 
-            <%= f.text_field :title , class: "edit-title col-xs-12" %>
-              <br>
-            <p>Opinion</p> 
-            <%= f.text_area :body, class: "edit-body col-xs-12" %>
-            <div>
-              <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
-            </div>
-          <% end %>
-      </div>
+    <%= flash[:notice] %>
 
-    <%# 投稿された%>
-      <div class="col-xs-9 clearfix">
+    <!--error表示-->
+    <%= render 'root/errors' %>
+
+    <!--user_info & 投稿-->
+    <%= render 'root/sidebar' %>
+
+    <!-- 投稿された-->
+      <div class="col-xs-9">
             <h2>Books</h2>
           <table class="table table-hover table-inverse">
               <thead>

@@ -1,0 +1,40 @@
+  <div class="col-xs-3">
+    <!--user Info-->
+    <div class="user_info">
+      <h2>User info</h2>
+      <!--Profile画像-->
+        <% if current_user.profile_image != nil %>
+          <%= attachment_image_tag current_user, :profile_image, style: "height: 100px" %>
+          <% else %>
+          <%= image_tag 'sample_img.gif', style: "height: 100px" %>
+        <% end %>
+      <!--Profile-->
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>name</td>
+            <td><span><%= current_user.name %></span></td>
+          </tr>
+          <tr>
+            <td>Introduction</td>
+            <td><%= current_user.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%= attachment_image_tag @user, :image, :fill, 300, 300, format: 'jpeg' %>
+      <%= link_to '', edit_user_path(current_user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+    </div>
+
+    <%# 投稿機能%>
+    <h1>New book</h1>
+      <%= form_for(@book) do |f| %>
+        <p>Title</p> 
+        <%= f.text_field :title , class: "edit-title col-xs-12" %>
+          <br>
+        <p>Opinion</p> 
+        <%= f.text_area :body, class: "edit-body col-xs-12" %>
+        <div>
+          <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
+        </div>
+      <% end %>
+  </div>
