@@ -32,6 +32,5 @@ class UserImagesController < ApplicationController
   private
   def user_image_params
     params.require(:user_image).permit(:name, :image, )
-    
   end
 end
