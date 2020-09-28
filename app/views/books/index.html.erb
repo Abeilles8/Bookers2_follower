@@ -4,7 +4,7 @@
   <div class="row">
       <%= flash[:notice] %>
       <!--error表示-->
-      <%= render 'root/errors' %>
+      <%= render 'root/errors_book' %>
 
       <!--user_info & 投稿-->
       <%= render 'root/sidebar' %>
@@ -27,11 +27,11 @@
                       <td>
                         <% if current_user.profile_image != nil %>
                           <%= attachment_image_tag current_user, :profile_image, style: "height: 50px" %>
-                          <% else %>
+                        <% else %>
                           <%= image_tag 'sample_img.gif', style: "height: 40px" %>
                         <% end %>
                       </td>
-                      <td><%= book.title %></td>
+                      <td><%= link_to book.title, book_path(book.id) %></td>
                       <td><%= book.body %></td>
                     </tr>
                   <% end %>

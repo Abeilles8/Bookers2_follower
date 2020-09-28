@@ -4,7 +4,7 @@
     <div class="row">
       <%= flash[:notice] %>
       <!--error表示-->
-      <%= render 'root/errors' %>
+      <%= render 'root/errors_book' %>
 
       <!--user_info & 投稿-->
       <%= render 'root/sidebar' %>
@@ -25,14 +25,14 @@
                   <% @users.each do |user| %>
                     <tr>
                       <td>
-                        <% if current_user.profile_image != nil %>
-                          <%= attachment_image_tag current_user, :profile_image, style: "height: 50px" %>
+                        <% if user.profile_image != nil %>
+                          <%= attachment_image_tag user, :profile_image, style: "height: 50px" %>
                           <% else %>
                           <%= image_tag 'sample_img.gif', style: "height: 40px" %>
                         <% end %>
                       </td>
                       <td><%= user.name %></td>
-                      <td><%= link_to 'show',user_path(user) %></td>
+                      <td><%= link_to 'Show',user_path(user) %></td>
                     </tr>
                   <% end %>
                 </tbody>

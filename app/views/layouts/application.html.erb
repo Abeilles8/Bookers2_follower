@@ -19,7 +19,7 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
                 <li>
-                  <%= link_to " Home", new_book_path,
+                  <%= link_to " Home", user_path(current_user),
                    class: "glyphicon glyphicon-home home" %>
                 </li>
                 <li>

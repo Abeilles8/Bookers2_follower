@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only:[]
-
-  def new
-    
-  end
+  # before_action :correct_user, only:[]
 
   def show
     @user = User.find(params[:id])
@@ -15,8 +12,9 @@ class UsersController < ApplicationController
     # if @book.user == current_user
     #   render "edit"
     # else
-    #   redirect_to books_path
+      # redirect_to books_path
     # end
+    
   end
 
   def index
