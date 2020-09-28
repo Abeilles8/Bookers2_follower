@@ -1,42 +1,42 @@
-  <!--Books_page-->
-  
+<!--My_page-->
+
 <div class="container">
   <div class="row">
-      <%= flash[:notice] %>
-      <!--error表示-->
-      <%= render 'root/errors' %>
+    <%= flash[:notice] %>
+    <!--error表示-->
+    <%= render 'root/errors' %>
 
-      <!--user_info & 投稿-->
-      <%= render 'root/sidebar' %>
+    <!--user_info & 投稿-->
+    <%= render 'root/sidebar' %>
 
-      <%# 投稿された%>
-      <div class="col-xs-9">
-              <h2>Books</h2>
+    <%# 投稿された%>
+        <div class="col-xs-9">
+              <h2>User Books</h2>
             <table class="table clearfix">
                 <thead>
                 <tr>
-                  <th></th>
+                  <th> </th>
                   <th>Title</th>
                   <th>Opinion</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                  <% @books.each do |book| %>
+                  <% @user.books.each do |book| %>
                     <tr>
                       <td>
-                        <% if current_user.profile_image != nil %>
+                          <% if current_user.profile_image != nil %>
                           <%= attachment_image_tag current_user, :profile_image, style: "height: 50px" %>
                           <% else %>
                           <%= image_tag 'sample_img.gif', style: "height: 40px" %>
                         <% end %>
                       </td>
-                      <td><%= book.title %></td>
+                      <td><%= link_to book.title, book_path(book.id) %></td>
                       <td><%= book.body %></td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
         </div>
-    </div>
-</div>
+  </div>
+</div> 
