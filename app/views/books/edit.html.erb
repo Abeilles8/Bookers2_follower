@@ -1,9 +1,10 @@
   <!--編集_page-->
+  
 <div class="container">
   <div class="row">
     <%# エラーメッセージ表示%>
-    <%= render 'root/errors' %>
-    
+    <%= render 'root/errors_book' %>
+
     <div class="col-md-6 col-md-ofset-3">
       <h1>Editing Book</h1>
       <%= form_for(@book, url: "/books/#{@book.id}") do |f| %>
@@ -14,7 +15,7 @@
         </div>
 
         <div class="field">
-          <label>Body</label>  
+          <label>Opinion</label>  
           <%= f.text_area :body, class:"edit-body col-xs-12" %>
         </div>
 

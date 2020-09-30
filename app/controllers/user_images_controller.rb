@@ -23,11 +23,11 @@ class UserImagesController < ApplicationController
 	  # @user_comment = PostComment.new
   end
 
-	def destroy
-    @user_image = UserImage.find(params[:id])
-    @user_image.destroy
-    redirect_to user_images_path
-  end
+	# def destroy
+  #   @user_image = UserImage.find(params[:id])
+  #   @user_image.destroy
+  #   redirect_to user_images_path
+  # end
 
   private
   def user_image_params
