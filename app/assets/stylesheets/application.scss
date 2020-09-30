@@ -54,6 +54,30 @@
     margin-inline-end: 0px;
   }
 
+  .title {
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .edit-body {
+      margin-bottom: 10px;
+  }
+
+  .link {
+    color: #000;
+    text-decoration: none;
+
+
+  }
+
+  a:hover{
+    background-color: #000;
+    color: #fff;
+  }
+
+
+
   #notice {
     color: green;
   }

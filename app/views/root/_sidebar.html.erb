@@ -15,17 +15,17 @@
       <table class="table">
         <tbody>
           <tr>
-            <td><p>name</p></td>
-            <td><span><%= current_user.name %></span></td>
+            <td><strong>name</strong></td>
+            <td><strong><%= current_user.name %></strong></td>
           </tr>
           <tr>
-            <td><p>Introduction</p></td>
-            <td><%= current_user.introduction %></td>
+            <td><strong>Introduction</strong></td>
+            <td><strong><%= current_user.introduction %></strong></td>
           </tr>
         </tbody>
       </table>
       <div>
-      
+
         <%= link_to '', edit_user_path(current_user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %> 
       </div>
     </div>
@@ -33,10 +33,10 @@
     <%# 投稿機能%>
     <h2>New book</h2>
       <%= form_for(@book) do |f| %>
-        <p>Title</p> 
+        <strong>Title</strong> 
         <%= f.text_field :title , class: "edit-title col-xs-12" %>
           <br>
-        <p>Opinion</p> 
+        <strong>Opinion</strong> 
         <%= f.text_area :body, class: "edit-body col-xs-12" %>
         <div>
           <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
