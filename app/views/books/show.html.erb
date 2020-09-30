@@ -16,7 +16,13 @@
               <tbody>
                   <tr>
                     <td>
-                      <%= attachment_image_tag @book.user, :profile_image, style: "height: 50px" %>
+                      <% if current_user.profile_image != nil %>
+                          <%= attachment_image_tag current_user, :profile_image, style: "height: 50px" %>
+                      <% else %>
+                          <%= image_tag 'sample_img.gif', style: "height: 40px" %>
+                      <% end %>
+                      <br>
+                      <%= link_to current_user.name, user_path(current_user), class: "link" %>
                     </td>
                     <td><%= @book.title %></td>
                     <td><%= @book.body %></td>
@@ -24,11 +30,11 @@
                     <% if current_user.id == @book.user_id %>
                       <td>
                         <%= link_to 'Edit', edit_book_path(@book.id), 
-                        class:"btn-sm btn-success" %>
+                        class:"btn-sm btn-success link" %>
                       </td>
                       <td>
                         <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に消しますか?", 
-                        class: "btn-sm btn-danger" %>
+                        class: "btn-sm btn-danger link" %>
                       </td>
                     <% else %>
                       <td></td>

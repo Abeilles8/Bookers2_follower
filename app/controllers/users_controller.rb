@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # before_action :signed_in_user, only:[]
 
   before_action :authenticate_user!, only: []
+  before_action :login_check, {only: [:edit, :update, :show, :deestroy]}
 
   def index
     @book = Book.new
