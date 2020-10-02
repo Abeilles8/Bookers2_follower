@@ -1,18 +1,18 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_book
 
   def index
     @book = Book.new
     @books = Book.all
-
   end
 
 
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to book_path(@book.id)
       flash[:notice] = "You have creatad book successfully."
+      redirect_to book_path(@book.id)
     else
       @books = Book.all
       render 'index'
@@ -21,7 +21,7 @@ class BooksController < ApplicationController
 
 
   def show
-    @book = Book.find(params[:id])
+    redirect_to books_url if @book.blank?
   end
 
 
@@ -58,5 +58,11 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body).merge(user_id: current_user.id)
   end
+
+  def set_book
+    @book = current_user.books.find_by(id: params[:id])
+    
+  end
+  
 
 end
