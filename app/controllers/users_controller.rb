@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # before_action :signed_in_user, only:[]
 
-  before_action :authenticate_user!, only: []
+  before_action :authenticate_user!
   before_action :login_check, {only: [:edit, :update, :show, :deestroy]}
 
   def index
@@ -16,7 +16,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
- 
+
+    # if params[:id] == current_user.id
+    #   @user = User.find(params[:id])
+    #   render :edit
+    # else
+    #   @user = current_user
+    #   render :show
+    # end
+
   end
 
 

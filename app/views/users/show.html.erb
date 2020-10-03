@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <%= flash[:notice] %>
+    <p id="notice"><%= flash[:notice] %></p>
     <!--error表示-->
     <%= render 'root/errors_book' %>
 
@@ -11,8 +11,8 @@
 
     <%# 投稿された%>
         <div class="col-xs-9">
-              <h2>Books</h2>
-            <table class="table">
+              <h2>Bookss</h2>
+            <table class="table table-hover table-inverse">
                 <thead>
                 <tr>
                   <th> </th>
