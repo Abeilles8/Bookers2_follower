@@ -1,13 +1,12 @@
   <!--詳細_page--->
 <div class="container">
   <div class="row">
-    <%= flash[:notice] %>
-
+    <p id="notice"><%= flash[:notice] %></p>
     <!--error表示-->
     <%= render 'root/errors_book' %>
 
     <!--user_info & 投稿-->
-    <%= render 'root/sidebar' %>
+    <%= render 'root/sidebar', user: @book.user %>
 
     <!-- 投稿された-->
     <div class="col-xs-9">
@@ -33,8 +32,8 @@
                         class:"btn-sm btn-success link" %>
                       </td>
                       <td>
-                        <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に消しますか?", 
-                        class: "btn-sm btn-danger link" %>
+                        <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", 
+                        class: "btn-sm btn-danger destroy_book_39626" %>
                       </td>
                     <% else %>
                       <td></td>

@@ -4,8 +4,8 @@
       <h2>User info</h2>
 
       <!--Profile画像-->
-        <% if current_user.profile_image != nil %>
-          <%= attachment_image_tag current_user, :profile_image, style: "height: 100px" %>
+        <% if user.profile_image != nil %>
+          <%= attachment_image_tag user, :profile_image, style: "height: 100px" %>
           <% else %>
           <%= image_tag 'sample_img.gif', style: "height: 100px" %>
         <% end %>
@@ -16,11 +16,11 @@
         <tbody>
           <tr>
             <td><strong>name</strong></td>
-            <td><strong><%= current_user.name %></strong></td>
+            <td><strong><%= user.name %></strong></td>
           </tr>
           <tr>
             <td><strong>Introduction</strong></td>
-            <td><strong><%= current_user.introduction %></strong></td>
+            <td><strong><%= user.introduction %></strong></td>
           </tr>
         </tbody>
       </table>

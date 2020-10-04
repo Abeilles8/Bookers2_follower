@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :signed_in_user, only:[]
-
-  before_action :authenticate_user!, only: []
-  before_action :login_check, {only: [:edit, :update, :show, :deestroy]}
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @book = Book.new
@@ -16,15 +14,22 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
- 
+   
+    # if params[:id] == current_user.id
+    #   @user = User.find(params[:id])
+    #   render :edit
+    # else
+    #   @user = current_user
+    #   render :show
+    # end
+
   end
 
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    if @user.save
-      redirect_to user_path
+    if @user.update(user_params)
+      redirect_to user_path(@user)
       flash[:notice] = "You have updated user successfully."
     else
       render 'edit'
@@ -37,4 +42,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
+  def correct_user
+    user = User.find(params[:id])
+    if current_user != user
+      redirect_to root_path
+    end
+  end
 end
