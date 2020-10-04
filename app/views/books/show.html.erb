@@ -6,7 +6,7 @@
     <%= render 'root/errors_book' %>
 
     <!--user_info & 投稿-->
-    <%= render 'root/sidebar' %>
+    <%= render 'root/sidebar', user: @book.user %>
 
     <!-- 投稿された-->
     <div class="col-xs-9">

@@ -1,10 +1,14 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_book
+  before_action :set_book 
+
+
+  
 
   def index
     @book = Book.new
     @books = Book.all
+
   end
 
 
@@ -21,12 +25,15 @@ class BooksController < ApplicationController
 
 
   def show
-    redirect_to books_url if @book.blank?
+    @book = Book.find(params[:id])
+    # redirect_to books_url if @book.blank?
   end
 
 
   def edit
     @book = Book.find(params[:id])
+    unless current_user.id == @book.user_id
+    end
   end
 
 
@@ -49,6 +56,7 @@ class BooksController < ApplicationController
   end
   
 
+
   private
   def book_params
     params.require(:book).permit(:title, :body).merge(user_id: current_user.id)
@@ -56,8 +64,13 @@ class BooksController < ApplicationController
 
   def set_book
     @book = current_user.books.find_by(id: params[:id])
-    
   end
   
+  def correct_user
+    user = User.find(params[:id])
+    if current_user != user
+      redirect_to root_path
+    end
+  end
 
 end
