@@ -6,7 +6,7 @@
     <%= render 'root/errors_book' %>
 
     <!--user_info & 投稿-->
-    <%= render 'root/sidebar', user: @book.user %>
+      <%= render 'root/sidebar', user: @book.user %>
 
     <!-- 投稿された-->
     <div class="col-xs-9">
@@ -15,13 +15,13 @@
               <tbody>
                   <tr>
                     <td>
-                      <% if current_user.profile_image != nil %>
-                          <%= attachment_image_tag current_user, :profile_image, style: "height: 50px" %>
+                      <% if @book.user.profile_image != nil %>
+                          <%= attachment_image_tag @book.user, :profile_image, style: "height: 50px" %>
                       <% else %>
                           <%= image_tag 'sample_img.gif', style: "height: 40px" %>
                       <% end %>
                       <br>
-                      <%= link_to current_user.name, user_path(current_user), class: "link" %>
+                      
                     </td>
                     <td><%= @book.title %></td>
                     <td><%= @book.body %></td>

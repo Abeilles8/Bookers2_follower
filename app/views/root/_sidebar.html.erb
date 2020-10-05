@@ -4,7 +4,7 @@
       <h2>User info</h2>
 
       <!--Profile画像-->
-        <% if user.profile_image != nil %>
+        <% if user.profile_image_id != nil %>
           <%= attachment_image_tag user, :profile_image, style: "height: 100px" %>
           <% else %>
           <%= image_tag 'sample_img.gif', style: "height: 100px" %>
