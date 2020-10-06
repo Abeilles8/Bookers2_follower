@@ -6,8 +6,8 @@
       <!--Profile画像-->
         <% if user.profile_image_id != nil %>
           <%= attachment_image_tag user, :profile_image, style: "height: 100px" %>
-          <% else %>
-          <%= image_tag 'sample_img.gif', style: "height: 100px" %>
+        <% else %>
+          <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format:'jpeg', class: "#", fallback: "sample_img.gif" %>
         <% end %>
 
 

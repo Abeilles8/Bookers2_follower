@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :baria_user, only: [:edit, :update]
-
+  # before_action :set_book
   
 
     def index
@@ -30,14 +30,13 @@ class BooksController < ApplicationController
 
 
     def edit
-      # @book = Book.find(params[:id])
-      redirect_to root_path unless current_user.id == @book.user_id
-        
+      @book = Book.find(params[:id])
+      # redirect_to books_path unless current_user.id == @book.user_id
     end
 
 
     def update
-      # @book = Book.find(params[:id])
+      @book = Book.find(params[:id])
       if @book.update(book_params)
         flash[:notice] = "You have update book successfully."
         redirect_to book_path(@book.id)
@@ -54,19 +53,23 @@ class BooksController < ApplicationController
       redirect_to books_path 
     end
   
-
-
-  private
+    
+    
+    private
     def book_params
       params.require(:book).permit(:title, :body).merge(user_id: current_user.id)
     end
-
+    
     def baria_user
-      @book = Book.find(params[:id])
-      unless Book.find(params[:id]).user.id.to_i == current_user.id
-          redirect_to books_path(current_user)      
+      # unless Book.find(params[:id]).user.id == current_user.id
+      unless Book.find(params[:id]).user_id == current_user.id
+        redirect_to books_path  
       end
     end
+
+    # def set_book
+    #   @book = current_user.books.find_by(id: params[:id])
+    # end
 
 
 
