@@ -21,7 +21,7 @@
                           <%= image_tag 'sample_img.gif', style: "height: 40px" %>
                       <% end %>
                       <br>
-                      
+                      <%= link_to @book.user.name, user_path(@book.user), class: "link" %>
                     </td>
                     <td><%= @book.title %></td>
                     <td><%= @book.body %></td>
