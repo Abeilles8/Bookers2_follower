@@ -1,9 +1,8 @@
-  <!--詳細_page--->
 <div class="container">
   <div class="row">
     <p id="notice"><%= flash[:notice] %></p>
     <!--error表示-->
-    <%= render 'root/errors_book' %>
+    <%= render 'root/errors_message', hoge: @book %>
 
     <!--user_info & 投稿-->
       <%= render 'root/sidebar', user: @book.user %>

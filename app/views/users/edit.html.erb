@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-
-     <%= render 'root/errors_message' %>
+    <%# errors表示 %>
+     <%= render 'root/errors_message', hoge: @user %>
   
     <h2>User info</h2>
     <%= form_for(@user) do |f| %>

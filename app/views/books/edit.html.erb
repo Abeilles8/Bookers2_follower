@@ -1,9 +1,7 @@
-  <!--編集_page-->
-  
 <div class="container">
   <div class="row">
-    <%# エラーメッセージ表示%>
-    <%= render 'root/errors_book' %>
+    <%# errors表示%>
+    <%= render 'root/errors_message', hoge: @book %>
 
     <div class="col-md-6 col-md-ofset-3">
       <h1>Editing Book</h1>
