@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  # before_action :baria_user, only: [:edit, :update, :destroy]
+  before_action :baria_user, only: [:edit, :update]
 
   
 
@@ -30,14 +30,14 @@ class BooksController < ApplicationController
 
 
     def edit
-      @book = Book.find(params[:id])
-      # redirect_to root_path unless current_user.id == @book.user_id
+      # @book = Book.find(params[:id])
+      redirect_to root_path unless current_user.id == @book.user_id
         
     end
 
 
     def update
-      @book = Book.find(params[:id])
+      # @book = Book.find(params[:id])
       if @book.update(book_params)
         flash[:notice] = "You have update book successfully."
         redirect_to book_path(@book.id)
@@ -61,10 +61,13 @@ class BooksController < ApplicationController
       params.require(:book).permit(:title, :body).merge(user_id: current_user.id)
     end
 
-    # def baria_user
-    #   unless Book.find(params[:id]).user.id.to_i == current_user.id
-    #       redirect_to books_path(current_user)      
-    #   end
-    # end
+    def baria_user
+      @book = Book.find(params[:id])
+      unless Book.find(params[:id]).user.id.to_i == current_user.id
+          redirect_to books_path(current_user)      
+      end
+    end
+
+
 
 end
