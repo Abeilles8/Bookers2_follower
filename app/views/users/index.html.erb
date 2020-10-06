@@ -1,10 +1,8 @@
-<!--Users_page-->
-
 <div class="container">
     <div class="row">
       <p id="notice"><%= flash[:notice] %></p>
       <!--error表示-->
-      <%= render 'root/errors_book' %>
+      <%= render 'root/errors_message', hoge: @book %>
 
       <!--user_info & 投稿-->
       <%= render 'root/sidebar', user: current_user %>
@@ -28,7 +26,7 @@
                         <% if user.profile_image_id != nil %>
                           <%= attachment_image_tag user, :profile_image, style: "height: 50px" %>
                           <% else %>
-                          <%= image_tag 'sample_img.gif', style: "height: 40px" %>
+                          <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format:'jpeg', class: "#", fallback: "sample_img.gif", size:'50x50' %>
                         <% end %>
                       </td>
                       <td><%= user.name %></td>
