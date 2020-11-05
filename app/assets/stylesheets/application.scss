@@ -25,7 +25,7 @@
   //   clear: both;
   // }
 
-  // header_title
+  // Bookers_title
   header .navbar-left span {
     font-size: 20px;
     padding-top: 10px;
@@ -67,8 +67,6 @@
   .link {
     color: #000;
     text-decoration: none;
-
-
   }
 
   a:hover{
@@ -77,13 +75,29 @@
   }
 
   a:visited{
-    color: #666666;
+    color: #666;
   }
-
-
 
   #notice{
     color: green;
+  }
+
+  .like-link {
+    text-decoration: none;
+  }
+
+  .like-link:hover {
+  background-color: #fff!important;
+  }
+
+.like-btn {
+  font-size: 15px;
+  color: #808080;
+  }
+
+.unlike-btn {
+  font-size: 15px;
+  color: #e54747;
   }
 
   @import "bootstrap-sprockets";
