@@ -1,0 +1,12 @@
+
+<% if current_user.liked_by?(book.id) %>
+  <%= link_to destroy_like_path(book), method: :DELETE do %>
+    <i class="glyphicon glyphicon-heart"></i>
+  <% end %>
+  <%= book.favorites.count %>
+<% else %>
+  <%= link_to create_like_path(book), method: :POST do %>
+    <i class="glyphicon glyphicon-heart-empty"></i>
+  <% end %>
+  <%= book.favorites.count %>
+<% end %>

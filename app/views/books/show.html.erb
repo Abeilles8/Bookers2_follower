@@ -25,13 +25,24 @@
                     <td><%= @book.title %></td>
                     <td><%= @book.body %></td>
 
+                    <!--いいね機能-->
+                    <% if current_user.id == @book.user_id %>
+                      <td></td>
+                      <td></td>
+                    <% else %>
+                      <td><%= render 'like', book: @book %></td>
+                    <!--コメント機能-->
+                    <td>コメント</td>
+                    <% end %>
+
+                    <!--編集-->
                     <% if current_user.id == @book.user_id %>
                       <td>
-                        <%= link_to 'Edit', edit_book_path(@book.id), 
+                        <%= link_to 'Edit', edit_book_path(@book.id),
                         class:"btn-sm btn-success link" %>
                       </td>
                       <td>
-                        <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", 
+                        <%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？",
                         class: "btn-sm btn-danger destroy_book_39626" %>
                       </td>
                     <% else %>
