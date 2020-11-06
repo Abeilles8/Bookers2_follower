@@ -31,11 +31,11 @@
                       <td></td>
                     <% else %>
                       <td><%= render 'like', book: @book %></td>
-                    <!--コメント機能-->
-                    <td>コメント</td>
+                    <!--コメント数-->
+                    <td>コメント数:<%= @book.book_comments.count %></td>
                     <% end %>
 
-                    <!--編集-->
+                    <!--編集機能-->
                     <% if current_user.id == @book.user_id %>
                       <td>
                         <%= link_to 'Edit', edit_book_path(@book.id),
@@ -52,6 +52,45 @@
                   </tr>
               </tbody>
             </table>
+
+            <!--コメント本文の表示-->
+            <table>
+              <tbody>
+                <% @book.book_comments.each do |book_comment| %>
+                  <tr>
+                    <td>
+                      <% if @book.user.profile_image != nil %>
+                          <%= attachment_image_tag @book.user, :profile_image, style: "height: 50px" %>
+                      <% else %>
+                          <%= image_tag 'sample_img.gif', style: "height: 40px" %>
+                      <% end %>
+                      <br>
+                      <%= link_to @book.user.name, user_path(@book.user), class: "link" %>
+                    </td>
+                    <td>
+                      <%= book_comment.comment %>
+                    </td>
+                    <td>
+                      <% if book_comment.user == current_user %>
+                        <div>
+                          <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger pull-right" %>
+                        </div>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+            <!--コメント投稿機能-->
+            <div>
+              <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+                <div>
+                  <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                </div>
+                  <%= f.submit "送信する"%>
+              <% end %>
+            </div>
       </div>
   </div>
 </div>

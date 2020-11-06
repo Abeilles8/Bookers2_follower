@@ -37,7 +37,7 @@
                         <%= render 'like', book: book %>
                       </td>
                       <!--コメント機能-->
-                      <td>コメント数:</td>
+                      <td>コメント数:<%= @book.book_comments.count %></td>
                     </tr>
                   <% end %>
                 </tbody>
