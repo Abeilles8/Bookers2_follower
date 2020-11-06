@@ -32,7 +32,7 @@
                     <% else %>
                       <td><%= render 'like', book: @book %></td>
                     <!--コメント数-->
-                    <td>コメント数:<%= @book.book_comments.count %></td>
+                    <td>コメント数: <%= @book.book_comments.count %></td>
                     <% end %>
 
                     <!--編集機能-->
@@ -84,7 +84,7 @@
 
             <!--コメント投稿機能-->
             <% if current_user.id == @book.user_id %>
-              <!--コメント機能を表示しない-->
+              <!--コメント機能を表示しない-->                                                                                                                                                                                                                         
             <% else %>
               <div>
                 <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
