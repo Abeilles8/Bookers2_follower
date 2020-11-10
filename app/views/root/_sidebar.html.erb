@@ -22,21 +22,47 @@
             <td><strong>Introduction</strong></td>
             <td><strong><%= user.introduction %></strong></td>
           </tr>
+          <tr>
+            <td><strong>follows</strong></td>
+            <td>
+              <%= link_to followings_path do %>
+                <%= user.follower.count %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>followers</strong></td>
+            <td>
+              <%= link_to followers_path do %>
+                <%= user.followed.count %>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
-      <div>
-
-        <%= link_to '', edit_user_path(user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %> 
+      <% unless user.id == current_user.id %>
+        <div>
+          <% if current_user.following?(user)%>
+            <%= button_to "フォロー外す", unfollow_path(user.id), class:"btn btn-primary", method: :post%>
+          <% else %>
+            <%= button_to "フォローする", follow_path(user.id), class:"btn btn-success", method: :post %>
+          <% end %>
+        </div>
+      <%else%>
+        <div>
+        <%= link_to '', edit_user_path(user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
       </div>
+      <% end %>
     </div>
+
 
     <%# 投稿機能%>
     <h2>New book</h2>
       <%= form_for(@book) do |f| %>
-        <strong>Title</strong> 
+        <strong>Title</strong>
         <%= f.text_field :title , class: "edit-title col-xs-12" %>
           <br>
-        <strong>Opinion</strong> 
+        <strong>Opinion</strong>
         <%= f.text_area :body, class: "edit-body col-xs-12" %>
         <div>
           <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>

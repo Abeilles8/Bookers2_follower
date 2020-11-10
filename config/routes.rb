@@ -18,5 +18,13 @@ Rails.application.routes.draw do
   resources :books do
     resources :book_comments, only: [:create, :destroy]
   end
+  
+  # follow
+  resources :relationships, only: [:create, :destroy]
+  post 'follow/:id' => 'relationships#create', as: 'follow' 
+  post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow' 
+  
+  	get 'followings' => 'relationships#followings', as: 'followings'
+  	get 'followers' => 'relationships#followers', as: 'followers'
 
 end
